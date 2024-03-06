@@ -16,3 +16,6 @@ vim.opt.isfname:append("@-@")
 vim.cmd("set clipboard=unnamedplus")
 
 vim.opt.updatetime = 50
+
+-- Line numbers
+vim.opt.number = true
