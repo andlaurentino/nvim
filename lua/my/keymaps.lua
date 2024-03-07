@@ -32,3 +32,6 @@ vim.keymap.set("n", "<Leader>w", ":w<CR>")
 
 -- Open NvimTree
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+
+-- Quit
+vim.keymap.set("n", "<leader>q", ":q<CR>")
