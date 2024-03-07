@@ -24,6 +24,12 @@ cmp.setup({
   })
 })
 
+lsp.on_attach(function(client, bufnr)
+    lsp.default_keymaps({buffer = bufnr})
+end)
+
+lsp.setup()
+
 local status_ok, mason = pcall(require, "mason")
 if not status_ok then return end
 
@@ -33,8 +39,16 @@ local status_ok, mason_lsp = pcall(require, "mason-lspconfig")
 if not status_ok then return end
 
 mason_lsp.setup({
-  ensure_installed = {},
+  ensure_installed = {
+      "gopls",
+      "pyright",
+      "csharp_ls",
+      "tsserver",
+  },
   handlers = {
     lsp.default_setup,
   },
 })
+
+
+vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename)

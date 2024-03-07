@@ -19,11 +19,11 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Navigate buffers / tabs
-vim.keymap.set("n", "<TAB>", ":bn!<CR>")
-vim.keymap.set("n", "<S-TAB>", ":bp!<CR>")
+vim.keymap.set("n", "<TAB>", "<cmd>bn!<CR>")
+vim.keymap.set("n", "<S-TAB>", "<cmd>bp!<CR>")
 
 -- Close buffer / tab
-vim.keymap.set("n", "<C-w>", ":bd<CR>")
+vim.keymap.set("n", "<C-w>", "<cmd>bd<CR>")
 
 -- Save file
 vim.keymap.set("n", "<C-s>", ":w<CR>")
@@ -31,7 +31,10 @@ vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>")
 vim.keymap.set("n", "<Leader>w", ":w<CR>")
 
 -- Open NvimTree
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
 
 -- Quit
-vim.keymap.set("n", "<leader>q", ":q<CR>")
+vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
+
+-- Source file
+vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
