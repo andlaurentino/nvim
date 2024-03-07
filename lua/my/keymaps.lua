@@ -29,3 +29,6 @@ vim.keymap.set("n", "<C-w>", ":bd<CR>")
 vim.keymap.set("n", "<C-s>", ":w<CR>")
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>")
 vim.keymap.set("n", "<Leader>w", ":w<CR>")
+
+-- Open NvimTree
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")

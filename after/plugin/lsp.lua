@@ -1,7 +1,10 @@
-local lsp = require('lsp-zero')
+local status_ok, lsp = pcall(require, "lsp-zero")
+if not status_ok then return end
 
-local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+local status_ok, cmp = pcall(require, "cmp")
+if not status_ok then return end
+
+local cmp_action = lsp.cmp_action()
 
 cmp.setup({
   mapping = cmp.mapping.preset.insert({
@@ -21,8 +24,15 @@ cmp.setup({
   })
 })
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
+local status_ok, mason = pcall(require, "mason")
+if not status_ok then return end
+
+mason.setup({})
+
+local status_ok, mason_lsp = pcall(require, "mason-lspconfig")
+if not status_ok then return end
+
+mason_lsp.setup({
   ensure_installed = {},
   handlers = {
     lsp.default_setup,
