@@ -7,7 +7,7 @@ return {
 		transparent = true,
 		styles = {
 			sidebars = "transparent",
-			floats = "transparent",
+			-- floats = "transparent",
 		},
 	},
 	config = function(_, opts)
