@@ -9,8 +9,8 @@ vim.keymap.set("n", "˚", function() vim.cmd.m("-2") end)
 vim.keymap.set("n", "∆", function() vim.cmd.m("+1") end)
 
 -- Move selected lines on visual
-vim.keymap.set("v", "˚", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "∆", ":m '>+1<CR>gv=gv")
+-- vim.keymap.set("v", "˚", ":m '<-2<CR>gv=gv")
+-- vim.keymap.set("v", "∆", ":m '>+1<CR>gv=gv")
 
 -- Move cursor on buffers
 vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -32,9 +32,9 @@ vim.keymap.set("n", "<S-TAB>", "<cmd>bp!<CR>")
 vim.keymap.set("n", "<C-w>", "<cmd>bd<CR>")
 
 -- Save file
-vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("n", "<C-s>", "<cmd>w<CR>")
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>")
-vim.keymap.set("n", "<Leader>w", ":w<CR>")
+vim.keymap.set("n", "<Leader>w", "<cmd>w<CR>")
 
 -- Open NvimTree
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
