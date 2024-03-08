@@ -42,7 +42,7 @@ return packer.startup(function(use)
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.5',
-		requires = { {'nvim-lua/plenary.nvim'} }
+		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 
 	use {
@@ -59,10 +59,10 @@ return packer.startup(function(use)
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
 		requires = {
-			{'neovim/nvim-lspconfig'},
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'L3MON4D3/LuaSnip'},
+			{ 'neovim/nvim-lspconfig' },
+			{ 'hrsh7th/nvim-cmp' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'L3MON4D3/LuaSnip' },
 		}
 	}
 
@@ -110,7 +110,7 @@ return packer.startup(function(use)
 	use "echasnovski/mini.nvim"
 	use "lukas-reineke/indent-blankline.nvim"
 
-    use "lewis6991/gitsigns.nvim"
+	use "lewis6991/gitsigns.nvim"
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

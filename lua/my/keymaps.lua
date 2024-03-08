@@ -5,8 +5,8 @@ vim.keymap.set("n", "|", vim.cmd.vsplit)
 vim.keymap.set("n", "-", vim.cmd.split)
 
 -- Move one line on normal
-vim.keymap.set("n", "˚", function () vim.cmd.m("-2") end)
-vim.keymap.set("n", "∆", function () vim.cmd.m("+1") end)
+vim.keymap.set("n", "˚", function() vim.cmd.m("-2") end)
+vim.keymap.set("n", "∆", function() vim.cmd.m("+1") end)
 
 -- Move selected lines on visual
 vim.keymap.set("v", "˚", ":m '<-2<CR>gv=gv")
