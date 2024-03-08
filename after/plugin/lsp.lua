@@ -24,7 +24,7 @@ cmp.setup({
 	})
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
 	lsp.default_keymaps({ buffer = bufnr })
 
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
