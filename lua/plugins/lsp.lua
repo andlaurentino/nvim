@@ -13,8 +13,6 @@ return {
 			local cmp = require("cmp")
 			local cmp_action = lsp.cmp_action()
 
-			print("hellow")
-
 			cmp.setup({
 				mapping = cmp.mapping.preset.insert({
 					-- `Enter` key to confirm completion
