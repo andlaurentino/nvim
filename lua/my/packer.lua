@@ -40,21 +40,13 @@ packer.init({
 return packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.5',
-		requires = { { 'nvim-lua/plenary.nvim' } }
-	}
-
-	use {
-		"folke/tokyonight.nvim",
-		as = "tokyonight",
-	}
-
+	-- Text hilighting
 	use {
 		"nvim-treesitter/nvim-treesitter",
 		{ run = ":TSUpdate" }
 	}
 
+	-- LSP
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
@@ -65,18 +57,10 @@ return packer.startup(function(use)
 			{ 'L3MON4D3/LuaSnip' },
 		}
 	}
-
 	use {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
-	}
-
-	use {
-		'nvim-tree/nvim-tree.lua',
-		requires = {
-			'nvim-tree/nvim-web-devicons',
-		},
 	}
 
 	use {
@@ -89,17 +73,6 @@ return packer.startup(function(use)
 	}
 
 	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-	}
-
-	use {
-		'akinsho/bufferline.nvim',
-		tag = "*",
-		requires = 'nvim-tree/nvim-web-devicons'
-	}
-
-	use {
 		"akinsho/toggleterm.nvim",
 		tag = '*',
 		config = function()
@@ -107,13 +80,37 @@ return packer.startup(function(use)
 		end
 	}
 
+	-- Productivity
 	use "echasnovski/mini.nvim"
 	use "lukas-reineke/indent-blankline.nvim"
+	use "mg979/vim-visual-multi"
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.5',
+		requires = { { 'nvim-lua/plenary.nvim' } }
+	}
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons',
+		},
+	}
 
 	use "lewis6991/gitsigns.nvim"
 
-	use "mg979/vim-visual-multi"
-
+	-- UI
+	use {
+		"folke/tokyonight.nvim",
+		as = "tokyonight",
+	}
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	}
+	use {
+		'akinsho/bufferline.nvim',
+		tag = "*",
+		requires = 'nvim-tree/nvim-web-devicons'
+	}
 	use "stevearc/dressing.nvim"
 	use "rcarriga/nvim-notify"
 	use "MunifTanjim/nui.nvim"
