@@ -18,6 +18,12 @@ vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
+-- Resize buffers
+vim.keymap.set("n", "<C-S-Left>", "<cmd>vertical resize -5<CR>")
+vim.keymap.set("n", "<C-S-Right>", "<cmd>vertical resize +5<CR>")
+vim.keymap.set("n", "<C-S-Up>", "<cmd>resize +5<CR>")
+vim.keymap.set("n", "<C-S-Down>", "<cmd>resize -5<CR>")
+
 -- Navigate buffers / tabs
 vim.keymap.set("n", "<TAB>", "<cmd>bn!<CR>")
 vim.keymap.set("n", "<S-TAB>", "<cmd>bp!<CR>")
