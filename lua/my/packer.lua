@@ -115,6 +115,9 @@ return packer.startup(function(use)
 	use "mg979/vim-visual-multi"
 
 	use "stevearc/dressing.nvim"
+	use "rcarriga/nvim-notify"
+	use "MunifTanjim/nui.nvim"
+	use "folke/noice.nvim"
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
