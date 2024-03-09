@@ -43,4 +43,4 @@ vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
 
 -- Source file
-vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
+-- vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
