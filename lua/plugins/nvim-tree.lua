@@ -66,7 +66,7 @@ return {
 		filters = {
 			dotfiles = false,
 			git_clean = false,
-			exclude = { ".git" }
+			custom = { ".git", "node_modules" }
 		},
 	}
 }

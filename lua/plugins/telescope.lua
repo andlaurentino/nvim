@@ -2,10 +2,10 @@ return {
 	'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	dependencies = { 'nvim-lua/plenary.nvim' },
 	config = function()
-		require('telescope').setup{ 
-			defaults = { 
-				file_ignore_patterns = { 
-					"node_modules" 
+		require('telescope').setup{
+			defaults = {
+				file_ignore_patterns = {
+					"node_modules"
 				}
 			}
 		}
@@ -16,5 +16,6 @@ return {
 		vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
 		vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+		vim.keymap.set('n', '<leader>ht', "<cmd>Telescope colorscheme<CR>", {})
 	end
 }
