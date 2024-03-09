@@ -1,5 +1,9 @@
 vim.g.mapleader = " "
 
+-- Prevent clear the clipboard after Past
+vim.cmd("xnoremap <expr> p 'pgv\"'.v:register.'y`>'")
+vim.cmd("xnoremap <noremap <expr> P 'Pgv\"'.v:register.'y`>'")
+
 -- Spliting
 vim.keymap.set("n", "|", vim.cmd.vsplit)
 vim.keymap.set("n", "-", vim.cmd.split)
