@@ -16,13 +16,13 @@ vim.keymap.set("n", "∆", function() vim.cmd.m("+1") end)
 -- vim.keymap.set("v", "˚", ":m '<-2<CR>gv=gv")
 -- vim.keymap.set("v", "∆", ":m '>+1<CR>gv=gv")
 
--- Move cursor on buffers
+-- Move cursor on Windows
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
--- Resize buffers
+-- Resize Windows
 vim.keymap.set("n", "<C-S-Left>", "<cmd>vertical resize -5<CR>")
 vim.keymap.set("n", "<C-S-Right>", "<cmd>vertical resize +5<CR>")
 vim.keymap.set("n", "<C-S-Up>", "<cmd>resize +5<CR>")
