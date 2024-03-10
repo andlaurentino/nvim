@@ -30,7 +30,7 @@
 > `i` = Between <br/>
 > `p` = Paragraph (text block spaced by blank lines) <br/>
 
-`%` = Move your cursor to the opening or closing symbol of [{}()[]""''<>] <br/>
+`%` = Move your cursor to the opening or closing of the following symbols: `{}`, `()`, `[]` <br/>
 
 #### Vertical
 
