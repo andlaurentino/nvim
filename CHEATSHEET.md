@@ -2,49 +2,60 @@
 
 ## Modes
 
-`Nomal mode` = Navigation
-`Visual mode` = Text selection
-`Command mode` = Type a command
+`Nomal mode` = Navigation <br/>
+`Visual mode` = Text selection <br/>
+`Command mode` = Type a command <br/>
 
 ## Normal mode
 
-h = Move left
-j = Move down
-k = Move up
-l = Move right
+`esc` = Enter normal mode
 
-gd = Go definition
-<C-o> = Go previous cursor prosition
-<C-I> = Go next cursor prosition
+`h` = Move left <br/>
+`j` = Move down <br/>
+`k` = Move up <br/>
+`l` = Move right <br/>
+
+`gd` = Go definition <br/>
+`<C-o>` = Go previous cursor prosition <br/>
+`<C-I>` = Go next cursor prosition <br/>
 
 ### Fast Movements
-[=cyv][ai][{}()[]""''<>p]
-> c = Change
-> y = Yanke / Copy
-> v = Visual / Select
-> = = Format lines
-> a = Inclusive char
-> i = Between
-> p = Paragraph (text block spaced by blank lines)
 
-% = Move your cursor to the opening or closing symbol of [{}()[]""''<>]
+[`=cyv`][`ai`][`{}()[]""''<>p`]
+> `c` = Change <br/>
+> `y` = Yanke / Copy <br/>
+> `v` = Visual / Select <br/>
+> `=` = Format lines <br/>
+> `a` = Inclusive char <br/>
+> `i` = Between <br/>
+> `p` = Paragraph (text block spaced by blank lines) <br/>
+
+`%` = Move your cursor to the opening or closing symbol of [{}()[]""''<>] <br/>
 
 #### Vertical
-oo = Go top (first row)
-<S-o> = Go botton (last row)
-<C-u> Jump up
-<C-d> Jump down
+
+`oo` = Go top (first row) <br/>
+`<S-o>` = Go botton (last row) <br/>
+`<C-u>` = Jump up <br/>
+`<C-d>` = Jump down <br/>
 
 #### Horizontal
-f[any char] = find next character in same line
-<S-f>[any char] = find previous character in same line
+
+`f[any char]` = find next character in same line <br/>
+`<S-f>[any char]` = find previous character in same line <br/>
+
+`0` = Move cursor to the start of the line <br/>
+`^` = Move cursor to the start of first char of the line <br/>
+`$` = Move cursor to the end of the line <br/>
 
 <br/>
 
 ## Visual Mode
-v = Enter on visual mode
-V = Select entire line
-o = Switch cursor for the beging or the end of the selection
+
+`v` = Enter on visual mode <br/>
+`V` = Select entire line <br/>
+`<c-v>` = Enter multi selection <br/>
+`o` = Switch cursor for the beging or the end of the selection <br/>
 
 <br/>
 
@@ -52,33 +63,38 @@ o = Switch cursor for the beging or the end of the selection
 
 `<leader>` is <space>
 
-<C-s> = Save file
-<leader>w = Save file
+`<C-s>` = Save file <br/>
+`<leader>w` = Save file <br/>
 
 ### Navitate through buffers (files opened)
-<tab> = Next buffer
-<S-tab> = Previous buffer
-<c-w> = Close buffer
+
+`<tab>` = Next buffer <br/>
+`<S-tab>` = Previous buffer <br/>
+`<c-w>` = Close buffer <br/>
 
 ### Split window
-- = Horizontal Split
-| = Vertical Split
+
+`-` = Horizontal Split <br/>
+`|` = Vertical Split <br/>
 
 ### Navigate between windows
-<C-l> = Go left window
-<C-h> = Go right window
-<C-k> = Go window above
-<C-j> = Go window bellow
 
-<leader>e = Open Navigation Tree (NvimTree)
-<leader>ff = Open Fuse Finder (Telescope)
+`<C-l>` = Go left window <br/>
+`<C-h>` = Go right window <br/>
+`<C-k>` = Go window above <br/>
+`<C-j>` = Go window bellow <br/>
+
+`<leader>e` = Open Navigation Tree (NvimTree) <br/>
+`<leader>ff` = Open Fuse Finder (Telescope) <br/>
 
 ## Language Server Protocol
-<leader>li = Lsp information (check if is using one lsp on the buffer)
-<leader>lr = Rename string
-<leader>lf = Format file
-<C-k> = Navigate up on the completion snippets
-<C-j> = Navigate down on the completion snippets
-K = Manual / Descrition
-[d = Next Diagnostics (Error, Warning, Tip)
-]d = Previous Diagnostics (Error, Warning, Tip)
+
+`<leader>li` = Lsp information (check if is using one lsp on the buffer) <br/>
+`<leader>lr` = Rename string <br/>
+`<leader>lf` = Format file <br/>
+`<C-k>` = Navigate up on the completion snippets <br/>
+`<C-j>` = Navigate down on the completion snippets <br/>
+`K` = Manual / Descrition <br/>
+`[d` = Next Diagnostics (Error, Warning, Tip) <br/>
+`]d` = Previous Diagnostics (Error, Warning, Tip) <br/>
+
