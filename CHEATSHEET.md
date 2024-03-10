@@ -61,7 +61,7 @@
 
 ## Custom keymaps
 
-`<leader>` is <space>
+`<leader>` is spacebar
 
 `<C-s>` = Save file <br/>
 `<leader>w` = Save file <br/>
