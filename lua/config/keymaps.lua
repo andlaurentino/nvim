@@ -48,3 +48,7 @@ vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
 
 -- Source file
 -- vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
+
+-- Add new empty lines
+vim.keymap.set("n", "<S-enter>", "O<Esc>")
+vim.keymap.set("n", "<enter>", "o<Esc>")
