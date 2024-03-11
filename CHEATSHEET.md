@@ -87,6 +87,13 @@
 `<leader>e` = Open Navigation Tree (NvimTree) <br/>
 `<leader>ff` = Open Fuse Finder (Telescope) <br/>
 
+### Resize windows
+
+`<C-S-l>` = Resize left window <br/>
+`<C-S-h>` = Resize right window <br/>
+`<C-S-k>` = Resize top window <br/>
+`<C-S-j>` = Resize bottom window <br/>
+
 ## Language Server Protocol
 
 `<leader>li` = Lsp information (check if is using one lsp on the buffer) <br/>
@@ -97,4 +104,5 @@
 `K` = Manual / Descrition <br/>
 `[d` = Next Diagnostics (Error, Warning, Tip) <br/>
 `]d` = Previous Diagnostics (Error, Warning, Tip) <br/>
-
+`<enter>` = Add one empty line bellow
+`<S-enter>` = Add one empty line above
