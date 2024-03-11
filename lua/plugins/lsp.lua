@@ -37,9 +37,9 @@ return {
 			lsp.on_attach(function(_, bufnr)
 				lsp.default_keymaps({ buffer = bufnr })
 
-				vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
 				vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
 				vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end)
+				vim.keymap.set("n", "<leader>ld", function() vim.lsp.buf.hover() end)
 				vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>")
 				vim.keymap.set("n", "<leader>lI", "<cmd>LspInstall<cr>")
 				vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end)
