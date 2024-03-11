@@ -1,24 +1,12 @@
 return {
 	"echasnovski/mini.nvim",
 	config = function()
-		local status_ok, pairs = pcall(require, "mini.pairs")
-		if not status_ok then return end
-
-		local status_ok, move = pcall(require, "mini.move")
-		if not status_ok then return end
-
-		local status_ok, surround = pcall(require, "mini.surround")
-		if not status_ok then return end
-
-		local status_ok, trailspace = pcall(require, "mini.trailspace")
-		if not status_ok then return end
-
-		local status_ok, indentscope = pcall(require, "mini.indentscope")
-		if not status_ok then return end
-
-		local status_ok, comment = pcall(require, "mini.comment")
-		if not status_ok then return end
-
+		local pairs = require("mini.pairs")
+		local move = require("mini.move")
+		local surround = require("mini.surround")
+		local trailspace = require("mini.trailspace")
+		local indentscope = require("mini.indentscope")
+		local comment = require("mini.comment")
 
 		pairs.setup()
 		move.setup({
