@@ -32,6 +32,12 @@ vim.keymap.set("n", "<C-S-Down>", "<cmd>resize -5<CR>")
 vim.keymap.set("n", "<TAB>", "<cmd>bn!<CR>")
 vim.keymap.set("n", "<S-TAB>", "<cmd>bp!<CR>")
 
+-- Indent keeping the visual mode
+vim.keymap.set("v", "<tab>", ">gv")
+vim.keymap.set("v", "<s-tab>", "<gv")
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
+
 -- Close buffer / tab
 vim.keymap.set("n", "<C-w>", "<cmd>bd<CR>")
 
