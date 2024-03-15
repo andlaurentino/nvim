@@ -54,11 +54,10 @@ return {
 			icons_enabled = true,
 			theme = bubbles_theme,
 			component_separators = '',
-			-- section_separators = { left = '', right = '' },
 			section_separators = { left = '', right = '' },
 			disabled_filetypes = {
-				statusline = { "NvimTree" },
-				winbar = { "NvimTree" },
+				-- statusline = { "NvimTree" },
+				-- winbar = { "NvimTree" },
 			},
 			ignore_focus = {},
 			always_divide_middle = true,
@@ -89,5 +88,9 @@ return {
 		winbar = {},
 		inactive_winbar = {},
 		extensions = {}
-	}
+	},
+	config = function(_, opts)
+		require("lualine").setup(opts)
+		vim.cmd("set laststatus=3")
+	end
 }
