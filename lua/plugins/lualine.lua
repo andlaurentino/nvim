@@ -10,8 +10,41 @@ local clients_lsp = function()
 	for _, client in pairs(clients) do
 		table.insert(c, client.name)
 	end
-	return '\u{f085} ' .. table.concat(c, '|')
+
+	return '🔧 ' .. table.concat(c, '|')
 end
+
+local colors = {
+	blue   = '#35c8f3',
+	orange = '#f39b35',
+	green  = '#35f394',
+	violet = '#d183e8',
+
+	cyan   = '#79dac8',
+	black  = '#080808',
+	white  = '#c6c6c6',
+	red    = '#ff5189',
+	grey   = '#303030',
+}
+
+local bubbles_theme = {
+	normal = {
+		a = { fg = colors.black, bg = colors.blue },
+		b = { fg = colors.white, bg = "" },
+		c = { fg = colors.white },
+	},
+
+	command = { a = { fg = colors.black, bg = colors.orange } },
+	insert = { a = { fg = colors.black, bg = colors.violet } },
+	visual = { a = { fg = colors.black, bg = colors.green } },
+	replace = { a = { fg = colors.black, bg = colors.red } },
+
+	inactive = {
+		a = { fg = colors.white, bg = colors.black },
+		b = { fg = colors.white, bg = colors.black },
+		c = { fg = colors.white },
+	},
+}
 
 return {
 	'nvim-lualine/lualine.nvim',
@@ -19,9 +52,10 @@ return {
 	opts = {
 		options = {
 			icons_enabled = true,
-			theme = 'auto',
-			component_separators = { left = '', right = '' },
-			section_separators = { left = '', right = '' },
+			theme = bubbles_theme,
+			component_separators = '',
+			-- section_separators = { left = '', right = '' },
+			section_separators = { left = '', right = '' },
 			disabled_filetypes = {
 				statusline = { "NvimTree" },
 				winbar = { "NvimTree" },
