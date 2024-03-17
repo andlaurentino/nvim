@@ -18,9 +18,9 @@ local colors = {
 	blue   = '#35c8f3',
 	orange = '#f39b35',
 	green  = '#35f394',
-	violet = '#d183e8',
+	violet = '#bb9af7',
+	cyan   = '#73daca',
 
-	cyan   = '#79dac8',
 	black  = '#080808',
 	white  = '#c6c6c6',
 	red    = '#ff5189',
@@ -29,13 +29,13 @@ local colors = {
 
 local bubbles_theme = {
 	normal = {
-		a = { fg = colors.black, bg = colors.blue },
+		a = { fg = colors.black, bg = colors.violet },
 		b = { fg = colors.white, bg = "" },
 		c = { fg = colors.white },
 	},
 
 	command = { a = { fg = colors.black, bg = colors.orange } },
-	insert = { a = { fg = colors.black, bg = colors.violet } },
+	insert = { a = { fg = colors.black, bg = colors.cyan } },
 	visual = { a = { fg = colors.black, bg = colors.green } },
 	replace = { a = { fg = colors.black, bg = colors.red } },
 
@@ -55,6 +55,7 @@ return {
 			theme = bubbles_theme,
 			component_separators = '',
 			section_separators = { left = '', right = '' },
+			-- section_separators = { left = '', right = '' },
 			disabled_filetypes = {
 				-- statusline = { "NvimTree" },
 				-- winbar = { "NvimTree" },
