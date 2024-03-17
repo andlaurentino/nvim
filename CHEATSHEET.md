@@ -66,6 +66,9 @@
 `<C-s>` = Save file <br/>
 `<leader>w` = Save file <br/>
 
+`<enter>` = Add one empty line bellow
+`<S-enter>` = Add one empty line above
+
 ### Navitate through buffers (files opened)
 
 `<tab>` = Next buffer <br/>
@@ -99,10 +102,9 @@
 `<leader>li` = Lsp information (check if is using one lsp on the buffer) <br/>
 `<leader>lr` = Rename string <br/>
 `<leader>lf` = Format file <br/>
+`<leader>la` = Code Actions (Imports, QuickFixes, etc) <br/>
 `<C-k>` = Navigate up on the completion snippets <br/>
 `<C-j>` = Navigate down on the completion snippets <br/>
 `K` = Manual / Descrition <br/>
 `[d` = Next Diagnostics (Error, Warning, Tip) <br/>
 `]d` = Previous Diagnostics (Error, Warning, Tip) <br/>
-`<enter>` = Add one empty line bellow
-`<S-enter>` = Add one empty line above

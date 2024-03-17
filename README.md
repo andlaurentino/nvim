@@ -21,9 +21,9 @@ git clone https://github.com/alaurentinoofficial/nvim ~/.config/nvim
 nvim
 ```
 
-## [Cheatsheet](CHEATSHEET.md)
+## [Cheatsheet 💩💩](CHEATSHEET.md)
 
-If your a newer with vim or with this distribution go to the [Cheatsheet](CHEATSHEET.md) documentation to learn how to use the keymaps
+If your a newer with vim or with this distribution go to the [Cheatsheet 💩💩](CHEATSHEET.md) documentation to learn how to use the keymaps
 
 ## Contribution
 
