@@ -69,5 +69,10 @@ return {
 			git_ignored = false,
 			custom = { "^.git$", "^node_modules$" }
 		},
-	}
+	},
+	config = function (_, opts)
+		require("nvim-tree").setup(opts)
+		-- Open NvimTree
+		vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc="Open Navigation Tree" })
+	end
 }
