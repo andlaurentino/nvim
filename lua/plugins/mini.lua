@@ -14,12 +14,16 @@ return {
 				-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
 				-- left = '<M-h>',
 				-- right = '<M-l>',
+				left = '˙',
+				right = '¬',
 				down = '∆',
 				up = '˚',
 
 				-- Move current line in Normal mode
 				-- line_left = '<M-h>',
 				-- line_right = '<M-l>',
+				line_left = '˙',
+				line_right = '¬',
 				line_down = '∆',
 				line_up = '˚',
 			},
