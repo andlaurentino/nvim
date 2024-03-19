@@ -7,7 +7,7 @@ return {
 	},
 	opts = {
 		messages = {
-			enabled = false,
+			enabled = true,
 		},
 		notify = {
 			enabled = true,
