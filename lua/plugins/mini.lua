@@ -4,7 +4,7 @@ return {
 		local pairs = require("mini.pairs")
 		local move = require("mini.move")
 		local surround = require("mini.surround")
-		local trailspace = require("mini.trailspace")
+		-- local trailspace = require("mini.trailspace")
 		local indentscope = require("mini.indentscope")
 		local comment = require("mini.comment")
 
@@ -35,7 +35,9 @@ return {
 			},
 		})
 		surround.setup()
-		trailspace.setup()
+		-- trailspace.setup({
+		-- 	only_in_normal_buffers = true,
+		-- })
 		indentscope.setup({
 			symbol = "│",
 			options = { try_as_border = true },
