@@ -15,6 +15,10 @@ local clients_lsp = function()
 end
 
 local colors = {
+	dark_blue = '#1b4282',
+	mid_blue = '#008cc8',
+	yellow = '#ffbf01',
+
 	blue   = '#1c7eff',
 	orange = '#f39b35',
 	green  = '#35f394',
@@ -59,7 +63,7 @@ return {
 			-- section_separators = { left = '', right = '' },
 			-- section_separators = { left = '', right = '' },
 			section_separators = { left = '', right = '' },
-			-- section_separators = { left = '', right = '' },
+			-- section_separators = { left = '', right = '' },
 			disabled_filetypes = {
 				-- statusline = { "NvimTree" },
 				-- winbar = { "NvimTree" },
@@ -73,13 +77,13 @@ return {
 				winbar = 1000,
 			}
 		},
-		sections = {
-			lualine_a = { 'mode' },
-			lualine_b = { 'branch', 'diff', 'diagnostics' },
+		sections = { -- 'diff', 'diagnostics'
+			lualine_a = { { 'mode', separator = { left = '', right = '' }, right_padding = 1 } },
+			lualine_b = { {'branch', separator = { left = '', right = '' }, left_padding = 1 } },
 			lualine_c = { 'filename' },
 			lualine_x = { clients_lsp, 'encoding', 'fileformat', 'filetype' },
 			lualine_y = { 'progress' },
-			lualine_z = { 'location' }
+			lualine_z = { { 'location', separator = { left = '', right = '' }, left_padding = 1 } }
 		},
 		inactive_sections = {
 			lualine_a = {},
