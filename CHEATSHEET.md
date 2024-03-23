@@ -39,6 +39,8 @@
 `<C-u>` = Jump up <br/>
 `<C-d>` = Jump down <br/>
 
+`zz` = Move the current line to the middle of the screen
+
 #### Horizontal
 
 `f[any char]` = find next character in same line <br/>
