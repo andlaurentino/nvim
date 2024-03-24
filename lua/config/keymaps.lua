@@ -55,6 +55,3 @@ vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc="Quit" })
 -- Add new empty lines
 vim.keymap.set("n", "<S-enter>", "O<Esc>")
 vim.keymap.set("n", "<enter>", "o<Esc>")
-
-
-vim.keymap.set("n", "<C-a>", "ggVG")
