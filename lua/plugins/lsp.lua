@@ -40,8 +40,6 @@ return {
 				vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
 				vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, { desc = "Go to declaration" })
 				vim.keymap.set("n", "<leader>ld", function() vim.lsp.buf.hover() end, { desc = "Show documentation" })
-				vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
-				vim.keymap.set("n", "<leader>lI", "<cmd>LspInstall<cr>", { desc = "Install new LSP" })
 				vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "Refactory Rename" })
 				vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format { async = true } end, { desc = "Format file" })
 				vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, { desc = "Open Code Actions" })
@@ -50,6 +48,8 @@ return {
 			end)
 
 			lsp.setup()
+			vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
+			vim.keymap.set("n", "<leader>lI", "<cmd>LspInstall<cr>", { desc = "Install new LSP" })
 		end
 	},
 	{
