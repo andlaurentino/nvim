@@ -64,7 +64,7 @@ return {
 				ensure_installed = {
 					"gopls",
 					"pyright",
-					"csharp_ls",
+					-- "csharp_ls",
 					"tsserver",
 					"lua_ls",
 				},
