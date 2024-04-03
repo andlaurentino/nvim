@@ -1,14 +1,14 @@
 return {
 	"echasnovski/mini.nvim",
 	config = function()
-		-- local pairs = require("mini.pairs")
+		local pairs = require("mini.pairs")
 		local move = require("mini.move")
 		local surround = require("mini.surround")
 		-- local trailspace = require("mini.trailspace")
 		local indentscope = require("mini.indentscope")
 		local comment = require("mini.comment")
 
-		-- pairs.setup()
+		pairs.setup()
 		move.setup({
 			mappings = {
 				-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
