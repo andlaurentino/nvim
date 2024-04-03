@@ -5,7 +5,7 @@ return {
 	priority = 1000,
 	opts = {
 		transparent = true,
-		theme = 'tokyonight',
+		style = "storm",
 		styles = {
 			sidebars = "transparent",
 			floats = "transparent",
