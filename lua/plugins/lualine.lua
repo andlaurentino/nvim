@@ -62,8 +62,9 @@ return {
 			-- section_separators = { left = '', right = '' },
 			-- section_separators = { left = '', right = '' },
 			-- section_separators = { left = '', right = '' },
-			section_separators = { left = '', right = '' },
+			-- section_separators = { left = '', right = '' },
 			-- section_separators = { left = '', right = '' },
+			section_separators = { left = '', right = '' },
 			disabled_filetypes = {
 				-- statusline = { "NvimTree" },
 				-- winbar = { "NvimTree" },
@@ -79,7 +80,7 @@ return {
 		},
 		sections = { -- 'diff', 'diagnostics'
 			lualine_a = { { 'mode', separator = { left = '', right = '' }, right_padding = 1 } },
-			lualine_b = { {'branch', separator = { left = '', right = '' }, left_padding = 1 } },
+			lualine_b = { {'branch', separator = { left = '', right = '' }, left_padding = 1 } },
 			lualine_c = { 'filename' },
 			lualine_x = { clients_lsp, 'encoding', 'fileformat', 'filetype' },
 			lualine_y = { { 'progress', separator = { left = '', right = '' } } },
