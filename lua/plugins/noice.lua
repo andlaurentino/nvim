@@ -6,8 +6,25 @@ return {
 		"rcarriga/nvim-notify",
 	},
 	opts = {
+		routes = {
+			{
+				filter = {
+					event = "msg_show",
+					kind = "",
+					find = "written",
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = "msg_show",
+					kind = "search_count",
+				},
+				opts = { skip = true },
+			},
+		},
 		messages = {
-			enabled = false,
+			enabled = true,
 		},
 		notify = {
 			enabled = true,
