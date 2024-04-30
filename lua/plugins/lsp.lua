@@ -19,7 +19,22 @@ return {
 					['<CR>'] = cmp.mapping.confirm({ select = false }),
 
 					-- Ctrl+Space to trigger completion menu
-					['<C-Space>'] = cmp.mapping.complete(),
+					['<C-space>'] = cmp.mapping({
+						i = function()
+							if cmp.visible() then
+								cmp.abort()
+							else
+								cmp.complete()
+							end
+						end,
+						c = function()
+							if cmp.visible() then
+								cmp.close()
+							else
+								cmp.complete()
+							end
+						end,
+					}),
 
 					-- Navigate between snippet placeholder
 					['<C-f>'] = cmp_action.luasnip_jump_forward(),
@@ -41,8 +56,10 @@ return {
 				vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, { desc = "Go to declaration" })
 				vim.keymap.set("n", "<leader>ld", function() vim.lsp.buf.hover() end, { desc = "Show documentation" })
 				vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "Refactory Rename" })
-				vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format { async = true } end, { desc = "Format file" })
-				vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, { desc = "Open Code Actions" })
+				vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format { async = true } end,
+					{ desc = "Format file" })
+				vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end,
+					{ desc = "Open Code Actions" })
 				vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, { desc = "Go next diagnostics" })
 				vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, { desc = "Go previous diagnostics" })
 			end)
