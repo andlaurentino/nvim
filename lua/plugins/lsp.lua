@@ -7,11 +7,19 @@ return {
 			{ 'hrsh7th/nvim-cmp' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'L3MON4D3/LuaSnip' },
+			{ 'vim-dadbod-completion' },
 		},
 		config = function()
 			local lsp = require("lsp-zero")
 			local cmp = require("cmp")
 			local cmp_action = lsp.cmp_action()
+
+			cmp.setup.filetype({ "sql" }, {
+				sources = {
+					{ name = "vim-dadbod-completion" },
+					{ name = "buffer" },
+				},
+			})
 
 			cmp.setup({
 				mapping = cmp.mapping.preset.insert({
