@@ -35,6 +35,8 @@ vim.keymap.set("n", "<C-S-Down>", "<cmd>resize -5<CR>")
 vim.keymap.set("n", "<TAB>", "<cmd>bn!<CR>", { desc = "Go next buffer" })
 vim.keymap.set("n", "<S-TAB>", "<cmd>bp!<CR>", { desc = "Go previous buffer" })
 
+vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Go previous buffer" })
+
 -- Indent keeping the visual mode
 vim.keymap.set("v", "<tab>", ">gv", { desc = "Indent forward" })
 vim.keymap.set("v", "<s-tab>", "<gv", { desc = "Indent backwar" })
