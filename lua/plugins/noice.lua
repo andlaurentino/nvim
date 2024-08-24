@@ -17,6 +17,14 @@ return {
 			},
 			{
 				filter = {
+					event = "",
+					kind = "",
+					find = "csharp-ls",
+				},
+				opts = { skip = false },
+			},
+			{
+				filter = {
 					event = "msg_show",
 					kind = "search_count",
 				},
@@ -25,17 +33,21 @@ return {
 		},
 		messages = {
 			enabled = true,
+			view = "notify",
 		},
 		notify = {
-			enabled = true,
+			enabled = false,
 			view = "notify",
 		},
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+			message = {
+				enabled = false
+			},
 			override = {
-				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-				["vim.lsp.util.stylize_markdown"] = true,
-				["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+				-- ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+				-- ["vim.lsp.util.stylize_markdown"] = true,
+				["cmp.entry.get_documentation"] = true,
 			},
 		},
 		-- you can enable a preset for easier configuration

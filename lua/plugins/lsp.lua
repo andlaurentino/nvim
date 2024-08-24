@@ -70,9 +70,13 @@ return {
 					{ desc = "Open Code Actions" })
 				vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, { desc = "Go next diagnostics" })
 				vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, { desc = "Go previous diagnostics" })
+
+				vim.lsp.handlers["window/showMessage"] = function() end
+				vim.lsp.handlers["window/logMessage"] = function() end
 			end)
 
 			lsp.setup()
+			vim.lsp.set_log_level("WARN")
 			vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
 			vim.keymap.set("n", "<leader>lI", "<cmd>LspInstall<cr>", { desc = "Install new LSP" })
 		end
