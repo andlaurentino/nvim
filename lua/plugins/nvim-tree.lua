@@ -18,10 +18,16 @@ return {
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	opts = {
 		on_attach = my_on_attach,
+		actions = {
+			open_file = {
+				quit_on_open = true,
+			},
+		},
 		sort = {
 			sorter = "case_sensitive",
 		},
 		view = {
+			side = 'right',
 			width = 30,
 		},
 		renderer = {
@@ -70,9 +76,9 @@ return {
 			custom = { "^.git$", "^node_modules$" }
 		},
 	},
-	config = function (_, opts)
+	config = function(_, opts)
 		require("nvim-tree").setup(opts)
 		-- Open NvimTree
-		vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc="Open Navigation Tree" })
+		vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Open Navigation Tree" })
 	end
 }
