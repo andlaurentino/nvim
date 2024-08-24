@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "q", "<cmd>q<CR>")
+-- vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Go previous buffer" })
+-- vim.keymap.set("n", "q", "<cmd>q<CR>")
 vim.keymap.set("n", "Q", "<cmd>qa!<CR>")
 
 -- Prevent clear the clipboard after Past
@@ -35,8 +36,6 @@ vim.keymap.set("n", "<C-S-Down>", "<cmd>resize -5<CR>")
 vim.keymap.set("n", "<TAB>", "<cmd>bn!<CR>", { desc = "Go next buffer" })
 vim.keymap.set("n", "<S-TAB>", "<cmd>bp!<CR>", { desc = "Go previous buffer" })
 
-vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Go previous buffer" })
-
 -- Indent keeping the visual mode
 vim.keymap.set("v", "<tab>", ">gv", { desc = "Indent forward" })
 vim.keymap.set("v", "<s-tab>", "<gv", { desc = "Indent backwar" })
@@ -62,5 +61,5 @@ vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
 -- vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
 
 -- Add new empty lines
-vim.keymap.set("n", "<S-enter>", "O<Esc>")
-vim.keymap.set("n", "<enter>", "o<Esc>")
+vim.keymap.set("n", "<S-CR>", "O<Esc>")
+vim.keymap.set("n", "<CR>", "o<Esc>")
