@@ -49,9 +49,23 @@ vim.keymap.set("n", "<C-w>", function()
 	vim.cmd('bdelete')
 end)
 vim.keymap.set("n", "<leader>w", function()
-	vim.cmd('NvimTreeClose')
-	vim.cmd('bdelete')
-end, { desc = "Close buffer" })
+    -- Check if the buffer is modified
+    if vim.bo.modified then
+        -- Ask to save the file
+        local choice = vim.fn.confirm("You have unsaved changes. Save before closing?", "&Yes\n&No\n&Cancel", 1)
+        if choice == 1 then
+            vim.cmd('write')  -- Save the file
+			vim.cmd('NvimTreeClose')  -- Close the NvimTree
+			vim.cmd('bdelete')  -- Close the buffer
+		elseif choice == 2 then
+			vim.cmd('NvimTreeClose')  -- Close the NvimTree
+			vim.cmd('bdelete!')  -- Close the buffer
+		else
+            return  -- Cancel the operation
+        end
+    end
+
+end, { desc = "Close buffer with save prompt" })
 
 -- Save file
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save buffer" })
