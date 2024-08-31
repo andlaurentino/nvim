@@ -48,11 +48,15 @@ vim.keymap.set("n", "<C-w>", function()
 	vim.cmd('NvimTreeClose')
 	vim.cmd('bdelete')
 end)
+vim.keymap.set("n", "<leader>w", function()
+	vim.cmd('NvimTreeClose')
+	vim.cmd('bdelete')
+end, { desc = "Close buffer" })
 
 -- Save file
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save buffer" })
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", { desc = "Save buffer" })
-vim.keymap.set("n", "<Leader>w", "<cmd>w<CR>", { desc = "Save buffer" })
+vim.keymap.set("n", "<Leader>s", "<cmd>w<CR>", { desc = "Save buffer" })
 
 -- Quit
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
