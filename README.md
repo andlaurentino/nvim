@@ -4,6 +4,10 @@ This project was heavily inspired by the [LazyVim](https://www.lazyvim.org/) dis
 
 ![readme-banner](imgs/readme-banner-v0.3.0.png)
 
+## Roadmap
+
+1. DAG (Debugger Adapter Protocol)
+
 ## Installation
 
 1. Do a backup of your current nvim configuration if have one
