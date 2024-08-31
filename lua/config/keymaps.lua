@@ -59,7 +59,7 @@ vim.keymap.set("n", "<leader>w", function()
 
 	vim.cmd('NvimTreeClose')  -- Close the NvimTree
 	vim.cmd('bdelete!')  -- Close the buffer
-end, { desc = "Close buffer with save prompt" })
+end, { desc = "Close buffer" })
 
 -- Save file
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save buffer" })
