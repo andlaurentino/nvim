@@ -1,9 +1,5 @@
 vim.g.mapleader = " "
 
--- vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Go previous buffer" })
--- vim.keymap.set("n", "q", "<cmd>q<CR>")
-vim.keymap.set("n", "Q", "<cmd>qa!<CR>")
-
 -- Prevent clear the clipboard after Past
 vim.cmd("xnoremap <expr> p 'pgv\"'.v:register.'y`>'")
 vim.cmd("xnoremap <noremap <expr> P 'Pgv\"'.v:register.'y`>'")
@@ -55,16 +51,14 @@ vim.keymap.set("n", "<leader>w", function()
         local choice = vim.fn.confirm("You have unsaved changes. Save before closing?", "&Yes\n&No\n&Cancel", 1)
         if choice == 1 then
             vim.cmd('write')  -- Save the file
-			vim.cmd('NvimTreeClose')  -- Close the NvimTree
-			vim.cmd('bdelete')  -- Close the buffer
 		elseif choice == 2 then
-			vim.cmd('NvimTreeClose')  -- Close the NvimTree
-			vim.cmd('bdelete!')  -- Close the buffer
 		else
             return  -- Cancel the operation
         end
     end
 
+	vim.cmd('NvimTreeClose')  -- Close the NvimTree
+	vim.cmd('bdelete!')  -- Close the buffer
 end, { desc = "Close buffer with save prompt" })
 
 -- Save file
@@ -73,7 +67,23 @@ vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", { desc = "Save buffer" })
 vim.keymap.set("n", "<Leader>s", "<cmd>w<CR>", { desc = "Save buffer" })
 
 -- Quit
-vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
+-- vim.keymap.set("n", "Q", "<cmd>qa!<CR>")
+vim.keymap.set("n", "<leader>q", function()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_get_option(buf, "modified") then
+			local buf_name = vim.api.nvim_buf_get_name(buf)
+			local choice = vim.fn.confirm("You have unsaved changes on " .. buf_name .. ". Save before closing?", "&Yes\n&No\n&Cancel", 1)
+			if choice == 1 then
+				vim.api.nvim_buf_call(buf, function() vim.cmd('write') end) -- Save buffer
+			elseif choice == 2 then
+			else
+                return  -- Cancel the operation
+            end
+        end
+    end
+
+	vim.cmd("qa!")
+end, { desc = "Quit" })
 
 -- Source file
 -- vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
