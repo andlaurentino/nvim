@@ -96,7 +96,8 @@ return {
 					"csharp_ls",
 					"tsserver",
 					"lua_ls",
-					"tailwindcss"
+					"tailwindcss",
+					"terraformls"
 				},
 				handlers = {
 					lsp.default_setup,
