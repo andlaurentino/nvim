@@ -4,6 +4,11 @@ return {
 	cmd = "Trouble",
 	keys = {
 		{
+			"<leader>tt",
+			"<cmd>Trouble todo<cr>",
+			desc = "Todo`s",
+		},
+		{
 			"<leader>td",
 			"<cmd>Trouble diagnostics toggle<cr>",
 			desc = "Diagnostics (Trouble)",
