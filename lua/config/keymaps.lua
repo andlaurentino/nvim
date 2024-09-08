@@ -45,20 +45,20 @@ vim.keymap.set("n", "<C-w>", function()
 	vim.cmd('bdelete')
 end)
 vim.keymap.set("n", "<leader>w", function()
-    -- Check if the buffer is modified
-    if vim.bo.modified then
-        -- Ask to save the file
-        local choice = vim.fn.confirm("You have unsaved changes. Save before closing?", "&Yes\n&No\n&Cancel", 1)
-        if choice == 1 then
-            vim.cmd('write')  -- Save the file
+	-- Check if the buffer is modified
+	if vim.bo.modified then
+		-- Ask to save the file
+		local choice = vim.fn.confirm("You have unsaved changes. Save before closing?", "&Yes\n&No\n&Cancel", 1)
+		if choice == 1 then
+			vim.cmd('write') -- Save the file
 		elseif choice == 2 then
 		else
-            return  -- Cancel the operation
-        end
-    end
+			return -- Cancel the operation
+		end
+	end
 
-	vim.cmd('NvimTreeClose')  -- Close the NvimTree
-	vim.cmd('bdelete!')  -- Close the buffer
+	vim.cmd('NvimTreeClose') -- Close the NvimTree
+	vim.cmd('bdelete!')   -- Close the buffer
 end, { desc = "Close buffer" })
 
 -- Save file
@@ -67,20 +67,23 @@ vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", { desc = "Save buffer" })
 vim.keymap.set("n", "<Leader>s", "<cmd>w<CR>", { desc = "Save buffer" })
 
 -- Quit
--- vim.keymap.set("n", "Q", "<cmd>qa!<CR>")
 vim.keymap.set("n", "<leader>q", function()
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-        if vim.api.nvim_buf_get_option(buf, "modified") then
+	vim.cmd("q")
+end, { desc = "Quit" })
+vim.keymap.set("n", "<leader>Q", function()
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_get_option(buf, "modified") then
 			local buf_name = vim.api.nvim_buf_get_name(buf)
-			local choice = vim.fn.confirm("You have unsaved changes on " .. buf_name .. ". Save before closing?", "&Yes\n&No\n&Cancel", 1)
+			local choice = vim.fn.confirm("You have unsaved changes on " .. buf_name .. ". Save before closing?",
+				"&Yes\n&No\n&Cancel", 1)
 			if choice == 1 then
 				vim.api.nvim_buf_call(buf, function() vim.cmd('write') end) -- Save buffer
 			elseif choice == 2 then
 			else
-                return  -- Cancel the operation
-            end
-        end
-    end
+				return -- Cancel the operation
+			end
+		end
+	end
 
 	vim.cmd("qa!")
 end, { desc = "Quit" })
