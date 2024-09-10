@@ -5,6 +5,15 @@ return {
 	config = function()
 		require('telescope').setup {
 			defaults = {
+				layout_strategy = 'vertical',
+				layout_config = {
+					vertical = {
+						width = 0.8,
+						prompt_position = "top",
+						mirror = true,
+						preview_cutoff = 0,
+					}
+				},
 				mappings = {
 					i = {
 						["<C-j>"] = require('telescope.actions').move_selection_next,
