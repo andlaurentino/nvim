@@ -45,16 +45,8 @@ vim.keymap.set("n", "<C-w>", function()
 	vim.cmd('bdelete')
 end)
 vim.keymap.set("n", "<leader>w", function()
-	-- Check if the buffer is modified
-	if vim.bo.modified then
-		-- Ask to save the file
-		local choice = vim.fn.confirm("You have unsaved changes. Save before closing?", "&Yes\n&No\n&Cancel", 1)
-		if choice == 1 then
-			vim.cmd('write') -- Save the file
-		elseif choice == 2 then
-		else
-			return -- Cancel the operation
-		end
+	if not AskToSaveBeforeLeave() then
+		return
 	end
 
 	vim.cmd('NvimTreeClose') -- Close the NvimTree
@@ -68,7 +60,11 @@ vim.keymap.set("n", "<Leader>s", "<cmd>w<CR>", { desc = "Save buffer" })
 
 -- Quit
 vim.keymap.set("n", "<leader>q", function()
-	vim.cmd("q")
+	if not AskToSaveBeforeLeave() then
+		return
+	end
+
+	vim.cmd("q!")
 end, { desc = "Quit" })
 vim.keymap.set("n", "<leader>Q", function()
 	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
@@ -94,3 +90,18 @@ end, { desc = "Quit" })
 -- Add new empty lines
 vim.keymap.set("n", "<S-CR>", "O<Esc>")
 vim.keymap.set("n", "<CR>", "o<Esc>")
+
+function AskToSaveBeforeLeave()
+	if vim.bo.modified then
+		-- Ask to save the file
+		local choice = vim.fn.confirm("You have unsaved changes. Save before closing?", "&Yes\n&No\n&Cancel", 1)
+		if choice == 1 then
+			vim.cmd('write') -- Save the file
+		elseif choice == 2 then
+		else
+			return false
+		end
+	end
+
+	return true
+end
