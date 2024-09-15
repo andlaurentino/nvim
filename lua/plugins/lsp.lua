@@ -9,6 +9,13 @@ return {
 			{ 'L3MON4D3/LuaSnip' },
 			{ 'vim-dadbod-completion' },
 		},
+		keys = {
+			{
+				"<leader>lm",
+				"<cmd>Mason<cr>",
+				desc = "Mason",
+			},
+		},
 		config = function()
 			local lsp = require("lsp-zero")
 			local cmp = require("cmp")
@@ -93,7 +100,8 @@ return {
 				ensure_installed = {
 					"gopls",
 					"pyright",
-					"csharp_ls",
+					-- "csharp_ls",
+					-- "omnisharp",
 					"tsserver",
 					"lua_ls",
 					"tailwindcss",
