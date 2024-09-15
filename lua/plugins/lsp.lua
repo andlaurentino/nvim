@@ -7,6 +7,8 @@ return {
 			{ 'hrsh7th/nvim-cmp' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'L3MON4D3/LuaSnip' },
+			{ 'rafamadriz/friendly-snippets' },
+			{ 'saadparwaiz1/cmp_luasnip' },
 			{ 'vim-dadbod-completion' },
 		},
 		keys = {
@@ -20,6 +22,7 @@ return {
 			local lsp = require("lsp-zero")
 			local cmp = require("cmp")
 			local cmp_action = lsp.cmp_action()
+			local luasnip = require('luasnip')
 
 			cmp.setup.filetype({ "sql" }, {
 				sources = {
@@ -28,7 +31,14 @@ return {
 				},
 			})
 
+			require("luasnip.loaders.from_vscode").lazy_load()
+
 			cmp.setup({
+				snippet = {
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
+				},
 				mapping = cmp.mapping.preset.insert({
 					-- `Enter` key to confirm completion
 					['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -61,7 +71,14 @@ return {
 					-- Scroll up and down in the completion documentation
 					['<C-u>'] = cmp.mapping.scroll_docs(-4),
 					['<C-d>'] = cmp.mapping.scroll_docs(4),
-				})
+				}),
+				sources = {
+					{ name = 'nvim_lsp' },
+					{ name = 'luasnip' },
+					{ name = 'buffer' },
+					{ name = 'path' },
+				}
+
 			})
 
 			lsp.on_attach(function(_, bufnr)
