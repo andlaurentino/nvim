@@ -11,7 +11,7 @@ local clients_lsp = function()
 		table.insert(c, client.name)
 	end
 
-	return '🔧 ' .. table.concat(c, '|')
+	return '🧪 ' .. table.concat(c, '|')
 end
 
 local colors = {
