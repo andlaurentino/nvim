@@ -63,7 +63,9 @@ return {
 
 					-- Navigate between snippet placeholder
 					['<C-f>'] = cmp_action.luasnip_jump_forward(),
+					['<TAB>'] = cmp_action.luasnip_jump_forward(),
 					['<C-b>'] = cmp_action.luasnip_jump_backward(),
+					['<S-TAB>'] = cmp_action.luasnip_jump_backward(),
 
 					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-j>"] = cmp.mapping.select_next_item(),
