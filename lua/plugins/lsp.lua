@@ -79,9 +79,23 @@ return {
 					{ name = 'luasnip' },
 					{ name = 'buffer' },
 					{ name = 'path' },
-				}
-
+				},
+				window = {
+					completion = {
+						border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, -- Rounded borders
+						winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+					},
+					documentation = {
+						border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, -- Rounded borders for docs
+						winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+					},
+				},
 			})
+
+			local colors = require("tokyonight.colors").setup()
+			vim.api.nvim_set_hl(0, "Pmenu", { bg = colors.bg_float, fg = colors.fg })
+			vim.api.nvim_set_hl(0, "PmenuSel", { bg = colors.bg_visual, fg = colors.fg })
+			vim.api.nvim_set_hl(0, "FloatBorder", { bg = colors.none, fg = colors.blue })
 
 			lsp.on_attach(function(_, bufnr)
 				lsp.default_keymaps({ buffer = bufnr })
