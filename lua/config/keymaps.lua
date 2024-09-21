@@ -105,3 +105,57 @@ function AskToSaveBeforeLeave()
 
 	return true
 end
+
+vim.keymap.set("n", "<leader>n", "<cmd>enew<CR>", { desc = "New buffer" })
+vim.keymap.set("n", "<leader>bt", function(filetype)
+	local pickers = require("telescope.pickers")
+	local finders = require("telescope.finders")
+	local actions = require("telescope.actions")
+	local action_state = require("telescope.actions.state")
+	local conf = require("telescope.config").values
+
+	-- List of all available filetypes in Neovim
+	local filetypes = vim.fn.getcompletion('', 'filetype')
+
+	-- Get the current buffer number
+	local bufnr = vim.api.nvim_get_current_buf()
+
+	-- Define the picker
+	pickers.new({}, {
+		prompt_title = "Select or Enter Filetype",
+		finder = finders.new_table({
+			results = filetypes
+		}),
+		sorter = conf.generic_sorter({}),
+		attach_mappings = function(_, map)
+			-- Define action on selection
+			map('i', '<CR>', function(prompt_bufnr)
+				local selected = action_state.get_selected_entry()
+
+
+				if selected then
+					-- Set the filetype of the current buffer to the selected one using Lua API
+					vim.api.nvim_buf_set_option(bufnr, "filetype", selected[1])
+				else
+					-- If no selection is made (user inputted a new value), get the prompt value
+					local new_value = action_state.get_current_line()
+					if new_value ~= "" then
+						vim.api.nvim_buf_set_option(bufnr, "filetype", new_value)
+					end
+				end
+				actions.close(prompt_bufnr)
+			end)
+
+			-- Bind <C-e> to manually input a new filetype
+			map('i', '<C-e>', function(prompt_bufnr)
+				local new_value = action_state.get_current_line()
+				if new_value ~= "" then
+					vim.api.nvim_buf_set_option(bufnr, "filetype", new_value)
+				end
+				actions.close(prompt_bufnr)
+			end)
+
+			return true
+		end,
+	}):find()
+end, { desc = "Change Filetype" })
