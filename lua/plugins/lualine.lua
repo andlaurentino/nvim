@@ -14,39 +14,47 @@ local clients_lsp = function()
 	return '🧪 ' .. table.concat(c, '|')
 end
 
-local colors = {
+local my_colors = {
 	dark_blue = '#1b4282',
-	mid_blue = '#008cc8',
-	yellow = '#ffbf01',
+	mid_blue  = '#008cc8',
+	yellow    = '#ffbf01',
 
-	blue   = '#1c7eff',
-	orange = '#f39b35',
-	green  = '#35f394',
-	violet = '#5e60d8',
-	cyan   = '#73daca',
+	blue      = '#1c7eff',
+	orange    = '#f39b35',
+	green     = '#35f394',
+	violet    = '#5e60d8',
+	cyan      = '#73daca',
 
-	black  = '#080808',
-	white  = '#ffffff',
-	red    = '#ff5189',
-	grey   = '#303030',
+	black     = '#080808',
+	white     = '#ffffff',
+	red       = '#ff5189',
+	grey      = '#303030',
 }
+
+local colors = require("tokyonight.colors").setup()
 
 local bubbles_theme = {
 	normal = {
-		a = { fg = colors.white, bg = colors.violet },
-		b = { fg = colors.white, bg = "" },
-		c = { fg = colors.white },
+		a = { fg = colors.white, bg = my_colors.violet },
+		b = { fg = colors.white, bg = colors.bg_highlight },
+		c = { fg = colors.white, bg = "" },
+		x = { fg = colors.white, bg = "" },
+		y = { fg = colors.white, bg = "" },
+		z = { fg = colors.white, bg = "" },
 	},
 
-	command = { a = { fg = colors.black, bg = colors.orange } },
-	insert = { a = { fg = colors.white, bg = colors.blue } },
-	visual = { a = { fg = colors.black, bg = colors.green } },
-	replace = { a = { fg = colors.black, bg = colors.red } },
+	command = { a = { fg = colors.bg, bg = colors.orange }, x = { fg = colors.white, bg = "" }, y = { fg = colors.white, bg = "" }, z = { fg = colors.white, bg = "" }, },
+	insert = { a = { fg = colors.bg, bg = colors.green }, x = { fg = colors.white, bg = "" }, y = { fg = colors.white, bg = "" }, z = { fg = colors.white, bg = "" }, },
+	visual = { a = { fg = colors.bg, bg = colors.blue }, x = { fg = colors.white, bg = "" }, y = { fg = colors.white, bg = "" }, z = { fg = colors.white, bg = "" }, },
+	replace = { a = { fg = colors.bg, bg = colors.cyan }, x = { fg = colors.white, bg = "" }, y = { fg = colors.white, bg = "" }, z = { fg = colors.white, bg = "" }, },
 
 	inactive = {
-		a = { fg = colors.white, bg = colors.black },
-		b = { fg = colors.white, bg = colors.black },
+		a = { fg = colors.white, bg = "" },
+		b = { fg = colors.white, bg = "" },
 		c = { fg = colors.white },
+		x = { fg = colors.white, bg = "" },
+		y = { fg = colors.white, bg = "" },
+		z = { fg = colors.white, bg = "" },
 	},
 }
 
@@ -58,12 +66,6 @@ return {
 			icons_enabled = true,
 			theme = bubbles_theme,
 			component_separators = '',
-			-- component_separators = { left = '', right = '' },
-			-- section_separators = { left = '', right = '' },
-			-- section_separators = { left = '', right = '' },
-			-- section_separators = { left = '', right = '' },
-			-- section_separators = { left = '', right = '' },
-			-- section_separators = { left = '', right = '' },
 			section_separators = { left = '', right = '' },
 			disabled_filetypes = {
 				-- statusline = { "NvimTree" },
@@ -79,12 +81,27 @@ return {
 			}
 		},
 		sections = { -- 'diff', 'diagnostics'
-			lualine_a = { { 'mode', separator = { left = '', right = '' }, right_padding = 1 } },
-			lualine_b = { {'branch', separator = { left = '', right = '' }, left_padding = 1 } },
+			lualine_a = { { 'mode', separator = { left = '', right = '' } } },
+			lualine_b = { { 'branch', separator = { right = '' }, left_margin = 1 } },
 			lualine_c = { 'filename' },
-			lualine_x = { clients_lsp, 'encoding', 'fileformat', 'filetype' },
-			lualine_y = { { 'progress', separator = { left = '', right = '' } } },
-			lualine_z = { { 'location', separator = { left = '', right = '' }, left_padding = 1 } }
+			lualine_x = {
+				clients_lsp,
+				'encoding',
+				{
+					function()
+						local expandtab = vim.api.nvim_buf_get_option(0, 'expandtab')
+						local tabsize = vim.api.nvim_buf_get_option(0, 'shiftwidth')
+						if expandtab then
+							return 'spaces: ' .. tabsize
+						else
+							return 'tabs: ' .. tabsize
+						end
+					end,
+					color = { fg = colors.white, bg = nil }, -- Customize the color as needed
+				}, 'filetype'
+			},
+			lualine_y = { { 'progress' } },
+			lualine_z = { { 'location', left_padding = 1 } }
 		},
 		inactive_sections = {
 			lualine_a = {},
