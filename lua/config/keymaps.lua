@@ -82,7 +82,7 @@ vim.keymap.set("n", "<leader>Q", function()
 	end
 
 	vim.cmd("qa!")
-end, { desc = "Quit" })
+end, { desc = "Quit all" })
 
 -- Source file
 -- vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
@@ -107,7 +107,7 @@ function AskToSaveBeforeLeave()
 end
 
 vim.keymap.set("n", "<leader>n", "<cmd>enew<CR>", { desc = "New buffer" })
-vim.keymap.set("n", "<leader>bt", function(filetype)
+vim.keymap.set("n", "<leader>bt", function()
 	local pickers = require("telescope.pickers")
 	local finders = require("telescope.finders")
 	local actions = require("telescope.actions")
@@ -159,3 +159,12 @@ vim.keymap.set("n", "<leader>bt", function(filetype)
 		end,
 	}):find()
 end, { desc = "Change Filetype" })
+vim.keymap.set("n", "<leader>bs", function()
+	if vim.api.nvim_buf_get_option(0, 'expandtab') then
+		vim.api.nvim_buf_set_option(0, 'expandtab', false)
+		print("Switched to Tabs")
+	else
+		vim.api.nvim_buf_set_option(0, 'expandtab', true)
+		print("Switched to Spaces")
+	end
+end, { desc = "Toggle Spacing" })
