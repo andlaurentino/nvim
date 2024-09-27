@@ -6,6 +6,8 @@ return {
 		local surround = require("mini.surround")
 		-- local trailspace = require("mini.trailspace")
 		local indentscope = require("mini.indentscope")
+
+		-- TODO: Change the comment library
 		local comment = require("mini.comment")
 
 		pairs.setup()
@@ -42,6 +44,6 @@ return {
 			symbol = "│",
 			options = { try_as_border = true },
 		})
-		comment.setup()
+		-- comment.setup()
 	end
 }

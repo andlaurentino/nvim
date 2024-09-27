@@ -88,8 +88,8 @@ end, { desc = "Quit all" })
 -- vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
 
 -- Add new empty lines
-vim.keymap.set("n", "<S-CR>", "O<Esc>")
-vim.keymap.set("n", "<CR>", "o<Esc>")
+-- vim.keymap.set("n", "<S-CR>", "O<Esc>")
+-- vim.keymap.set("n", "<CR>", "o<Esc>")
 
 function AskToSaveBeforeLeave()
 	if vim.bo.modified then

@@ -94,7 +94,7 @@ return {
 
 			local colors = require("tokyonight.colors").setup()
 			vim.api.nvim_set_hl(0, "Pmenu", { bg = colors.bg_float, fg = colors.fg })
-			vim.api.nvim_set_hl(0, "PmenuSel", { bg = colors.bg_visual, fg = colors.fg })
+			vim.api.nvim_set_hl(0, "PmenuSel", { bg = colors.green, fg = colors.bg })
 			vim.api.nvim_set_hl(0, "FloatBorder", { bg = colors.none, fg = colors.blue })
 
 			lsp.on_attach(function(_, bufnr)
