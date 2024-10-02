@@ -72,7 +72,7 @@ return {
 		filters = {
 			dotfiles = false,
 			git_clean = false,
-			git_ignored = false,
+			git_ignored = true,
 			custom = { "^.git$", "^node_modules$" }
 		},
 	},
