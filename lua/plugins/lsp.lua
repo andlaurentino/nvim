@@ -135,7 +135,7 @@ return {
 					"pyright",
 					-- "csharp_ls",
 					-- "omnisharp",
-					"tsserver",
+					-- "tsserver",
 					"lua_ls",
 					"tailwindcss",
 					"terraformls"
