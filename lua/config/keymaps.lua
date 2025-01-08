@@ -8,14 +8,6 @@ vim.cmd("xnoremap <noremap <expr> P 'Pgv\"'.v:register.'y`>'")
 vim.keymap.set("n", "|", vim.cmd.vsplit, { desc = "Vertical split" })
 vim.keymap.set("n", "-", vim.cmd.split, { desc = "Horizontal split" })
 
--- Move one line on normal
--- vim.keymap.set("n", "˚", function() vim.cmd.m("-2") end, { desc="Go next buffer" })
--- vim.keymap.set("n", "∆", function() vim.cmd.m("+1") end, { desc="Go next buffer" })
-
--- Move selected lines on visual
--- vim.keymap.set("v", "˚", ":m '<-2<CR>gv=gv")
--- vim.keymap.set("v", "∆", ":m '>+1<CR>gv=gv")
-
 -- Move cursor on Windows
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
@@ -159,12 +151,63 @@ vim.keymap.set("n", "<leader>bt", function()
 		end,
 	}):find()
 end, { desc = "Change Filetype" })
+
+local function set_spacing(expandtab, tabstop, shiftwidth, softtabstop)
+	vim.api.nvim_buf_set_option(0, 'expandtab', expandtab)
+	vim.api.nvim_buf_set_option(0, 'tabstop', tabstop)
+	vim.api.nvim_buf_set_option(0, 'shiftwidth', shiftwidth)
+	vim.api.nvim_buf_set_option(0, 'softtabstop', softtabstop)
+end
+
 vim.keymap.set("n", "<leader>bs", function()
-	if vim.api.nvim_buf_get_option(0, 'expandtab') then
-		vim.api.nvim_buf_set_option(0, 'expandtab', false)
-		print("Switched to Tabs")
-	else
-		vim.api.nvim_buf_set_option(0, 'expandtab', true)
-		print("Switched to Spaces")
-	end
+	local pickers = require('telescope.pickers')
+	local finders = require('telescope.finders')
+	local actions = require('telescope.actions')
+	local action_state = require('telescope.actions.state')
+
+	local options = {
+		{ expandtab = true,  tabstop = 2, shiftwidth = 2, softtabstop = 2, description = "Spaces: 2" },
+		{ expandtab = true,  tabstop = 4, shiftwidth = 4, softtabstop = 4, description = "Spaces: 4" },
+		{ expandtab = false, tabstop = 2, shiftwidth = 2, softtabstop = 2, description = "Tabs: 2" },
+		{ expandtab = false, tabstop = 4, shiftwidth = 4, softtabstop = 4, description = "Tabs: 4" },
+	}
+
+	pickers.new({}, {
+		prompt_title = "Toggle Spacing",
+		finder = finders.new_table {
+			results = options,
+			entry_maker = function(entry)
+				return {
+					value = entry,
+					display = entry.description,
+					ordinal = entry.description,
+				}
+			end,
+		},
+		sorter = require('telescope.config').values.generic_sorter({}),
+		attach_mappings = function(_, map)
+			actions.select_default:replace(function()
+				actions.close(_)
+				local selection = action_state.get_selected_entry().value
+				set_spacing(
+					selection.expandtab,
+					selection.tabstop,
+					selection.shiftwidth,
+					selection.softtabstop
+				)
+			end)
+			return true
+		end,
+	}):find()
 end, { desc = "Toggle Spacing" })
+
+vim.keymap.set('n', '<leader>bn', function()
+    if vim.wo.relativenumber then
+        vim.wo.number = true
+        vim.wo.relativenumber = false
+    else
+        vim.wo.number = true
+        vim.wo.relativenumber = true
+    end
+end, { desc = 'Toggle relative numbers' })
+

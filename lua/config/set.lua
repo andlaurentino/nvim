@@ -18,4 +18,5 @@ vim.cmd("set clipboard=unnamedplus")
 vim.opt.updatetime = 50
 
 -- Line numbers
-vim.opt.number = true
+vim.opt.number = false
+vim.opt.relativenumber = true
