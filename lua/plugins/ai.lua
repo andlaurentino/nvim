@@ -16,6 +16,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
 		"hrsh7th/nvim-cmp",
-		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+		-- "nvim-tree/nvim-web-devicons",
+		"echasnovski/mini.icons",
 	},
 }

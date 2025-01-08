@@ -15,7 +15,7 @@ end
 
 return {
 	'nvim-tree/nvim-tree.lua',
-	dependencies = { 'nvim-tree/nvim-web-devicons' },
+	-- dependencies = { 'nvim-tree/nvim-web-devicons' },
 	opts = {
 		on_attach = my_on_attach,
 		actions = {
