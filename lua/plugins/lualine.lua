@@ -19,7 +19,9 @@ local my_colors = {
 	mid_blue  = '#008cc8',
 	yellow    = '#ffbf01',
 
-	blue      = '#1c7eff',
+	new_blue  = '#1478b7',
+	blue      = '#1478b7',
+	-- blue      = '#1c7eff',
 	orange    = '#f39b35',
 	green     = '#35f394',
 	violet    = '#5e60d8',
@@ -35,7 +37,7 @@ local colors = require("tokyonight.colors").setup()
 
 local bubbles_theme = {
 	normal = {
-		a = { fg = colors.white, bg = my_colors.violet },
+		a = { fg = colors.white, bg = my_colors.new_blue },
 		b = { fg = colors.white, bg = colors.bg_highlight },
 		c = { fg = colors.white, bg = "" },
 		x = { fg = colors.white, bg = "" },
@@ -75,14 +77,14 @@ return {
 			always_divide_middle = true,
 			globalstatus = true,
 			refresh = {
-				statusline = 1000,
-				tabline = 1000,
-				winbar = 1000,
+				statusline = 100,
+				tabline = 100,
+				winbar = 100,
 			}
 		},
 		sections = { -- 'diff', 'diagnostics'
-			lualine_a = { { 'mode', separator = { left = '', right = '' } } },
-			lualine_b = { { 'branch', separator = { right = '' }, left_margin = 1 } },
+			lualine_a = { { 'mode', separator = { left = '', right = '' } } },
+			lualine_b = { { 'branch', icon = '', separator = { right = '' } } },
 			lualine_c = { 'filename' },
 			lualine_x = {
 				clients_lsp,
