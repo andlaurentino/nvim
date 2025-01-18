@@ -30,10 +30,26 @@ vim.keymap.set("v", "<s-tab>", "<gv", { desc = "Indent backwar" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent forward" })
 vim.keymap.set("v", "<", "<gv", { desc = "Indent backward" })
 
+function AskToSaveBeforeLeave()
+	if vim.bo.modified then
+		-- Ask to save the file
+		local choice = vim.fn.confirm("You have unsaved changes. Save before closing?", "&Yes\n&No\n&Cancel", 1)
+		if choice == 1 then
+			vim.cmd('write') -- Save the file
+		elseif choice == 2 then
+		else
+			return false
+		end
+	end
+
+	return true
+end
+
 -- Close buffer / tab
 -- vim.keymap.set("n", "<C-w>", "<cmd>bd<CR>")
 vim.keymap.set("n", "<C-w>", function()
-	vim.cmd('NvimTreeClose')
+	vim.cmd('Neotree close') -- Close the NvimTree
+	-- vim.cmd('NvimTreeClose')
 	vim.cmd('bdelete')
 end)
 vim.keymap.set("n", "<leader>w", function()
@@ -41,7 +57,8 @@ vim.keymap.set("n", "<leader>w", function()
 		return
 	end
 
-	vim.cmd('NvimTreeClose') -- Close the NvimTree
+	vim.cmd('Neotree close') -- Close the NvimTree
+	-- vim.cmd('NvimTreeClose') -- Close the NvimTree
 	vim.cmd('bdelete!')   -- Close the buffer
 end, { desc = "Close buffer" })
 
@@ -82,21 +99,6 @@ end, { desc = "Quit all" })
 -- Add new empty lines
 -- vim.keymap.set("n", "<S-CR>", "O<Esc>")
 -- vim.keymap.set("n", "<CR>", "o<Esc>")
-
-function AskToSaveBeforeLeave()
-	if vim.bo.modified then
-		-- Ask to save the file
-		local choice = vim.fn.confirm("You have unsaved changes. Save before closing?", "&Yes\n&No\n&Cancel", 1)
-		if choice == 1 then
-			vim.cmd('write') -- Save the file
-		elseif choice == 2 then
-		else
-			return false
-		end
-	end
-
-	return true
-end
 
 vim.keymap.set("n", "<leader>n", "<cmd>enew<CR>", { desc = "New buffer" })
 vim.keymap.set("n", "<leader>bt", function()
