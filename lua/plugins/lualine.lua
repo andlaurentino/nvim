@@ -37,7 +37,7 @@ local colors = require("tokyonight.colors").setup()
 
 local bubbles_theme = {
 	normal = {
-		a = { fg = colors.white, bg = my_colors.new_blue },
+		a = { fg = my_colors.white, bg = my_colors.new_blue },
 		b = { fg = colors.white, bg = colors.bg_highlight },
 		c = { fg = colors.white, bg = "" },
 		x = { fg = colors.white, bg = "" },
