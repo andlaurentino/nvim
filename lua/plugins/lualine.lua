@@ -83,8 +83,8 @@ return {
 			}
 		},
 		sections = { -- 'diff', 'diagnostics'
-			lualine_a = { { 'mode', separator = { left = '', right = '' } } },
-			lualine_b = { { 'branch', icon = '', separator = { right = '' } } },
+			lualine_a = { { icon = "", "mode", separator = { left = '', right = '' } } },
+			lualine_b = { { 'branch', icon = '󰊢', separator = { right = '' } } },
 			lualine_c = { 'filename' },
 			lualine_x = {
 				clients_lsp,

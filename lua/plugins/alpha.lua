@@ -2,6 +2,11 @@ return {
 	'goolord/alpha-nvim',
 	priority = 1000,
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
+	init = function()
+		-- Disable netrw
+		vim.g.loaded_netrw = 1
+		vim.g.loaded_netrwPlugin = 1
+	end,
 	config = function()
 		local alpha = require('alpha')
 		local dashboard = require('alpha.themes.dashboard')
@@ -41,26 +46,5 @@ return {
 
 		-- Send config to alpha
 		alpha.setup(dashboard.opts)
-
-		-- Disable folding on alpha buffer and auto close it
-		vim.cmd([[
-            autocmd FileType alpha setlocal nofoldenable
-            autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
-            autocmd User AlphaReady set laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
-        ]])
-
-		vim.api.nvim_create_autocmd("VimEnter", {
-			callback = function()
-				local args = vim.fn.argv()
-				if #args == 1 then
-					local arg = args[1]
-					if vim.fn.isdirectory(arg) ~= 0 then
-						-- Argument is a directory, change to it and show alpha
-						vim.cmd.cd(arg)
-						require("alpha").start()
-					end
-				end
-			end,
-		})
 	end
-};
+}
