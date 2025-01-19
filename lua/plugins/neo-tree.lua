@@ -8,7 +8,9 @@ return {
 	},
 	config = function()
 		require("neo-tree").setup({
-			close_if_last_window = true,
+			-- close_if_last_window = true,
+			auto_open = false,
+			popup_border_style = "rounded",
 			window = {
 				position = "right",
 				width = 30,
@@ -18,6 +20,7 @@ return {
 				}
 			},
 			filesystem = {
+				hijack_netrw_behavior = "disabled",
 				follow_current_file = false,
 				filtered_items = {
 					visible = false,

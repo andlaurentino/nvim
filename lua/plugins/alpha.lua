@@ -50,20 +50,16 @@ return {
         ]])
 
 		-- Automatically open dashboard when no arguments were passed
-		vim.api.nvim_create_autocmd("VimEnter", {
-			callback = function()
-				require("alpha").start()
-			end,
-		})
-        --     autocmd User AlphaReady set laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
-        -- ]])
+		-- vim.api.nvim_create_autocmd("VimEnter", {
+		-- 	callback = function()
+		-- 		require("alpha").start()
+		-- 	end,
+		-- })
 
 		-- Automatically open dashboard when no arguments were passed
 		vim.api.nvim_create_autocmd("VimEnter", {
 			callback = function()
-				if vim.fn.argc() == 0 and vim.fn.line2byte("$") == -1 then
-					require("alpha").start()
-				end
+				require("alpha").start()
 			end,
 		})
 	end

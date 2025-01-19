@@ -212,4 +212,3 @@ vim.keymap.set('n', '<leader>bn', function()
         vim.wo.relativenumber = true
     end
 end, { desc = 'Toggle relative numbers' })
-
