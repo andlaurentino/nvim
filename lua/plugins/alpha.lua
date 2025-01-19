@@ -49,17 +49,17 @@ return {
             autocmd User AlphaReady set laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
         ]])
 
-		-- Automatically open dashboard when no arguments were passed
-		-- vim.api.nvim_create_autocmd("VimEnter", {
-		-- 	callback = function()
-		-- 		require("alpha").start()
-		-- 	end,
-		-- })
-
-		-- Automatically open dashboard when no arguments were passed
 		vim.api.nvim_create_autocmd("VimEnter", {
 			callback = function()
-				require("alpha").start()
+				local args = vim.fn.argv()
+				if #args == 1 then
+					local arg = args[1]
+					if vim.fn.isdirectory(arg) ~= 0 then
+						-- Argument is a directory, change to it and show alpha
+						vim.cmd.cd(arg)
+						require("alpha").start()
+					end
+				end
 			end,
 		})
 	end
