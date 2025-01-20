@@ -48,8 +48,7 @@ end
 -- Close buffer / tab
 -- vim.keymap.set("n", "<C-w>", "<cmd>bd<CR>")
 vim.keymap.set("n", "<C-w>", function()
-	vim.cmd('Neotree close') -- Close the NvimTree
-	-- vim.cmd('NvimTreeClose')
+	vim.cmd('NvimTreeClose')
 	vim.cmd('bdelete')
 end)
 vim.keymap.set("n", "<leader>w", function()
@@ -57,8 +56,7 @@ vim.keymap.set("n", "<leader>w", function()
 		return
 	end
 
-	vim.cmd('Neotree close') -- Close the NvimTree
-	-- vim.cmd('NvimTreeClose') -- Close the NvimTree
+	vim.cmd('NvimTreeClose') -- Close the NvimTree
 	vim.cmd('bdelete!')   -- Close the buffer
 end, { desc = "Close buffer" })
 
