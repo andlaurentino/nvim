@@ -5,6 +5,9 @@ return {
 	version = false,
 	opts = {
 		provider = "claude",
+		claude = {
+			model = "claude-3-5-sonnet-20241022"
+		}
 	},
 	config = function(_, opts)
 		require('avante_lib').load()
