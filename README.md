@@ -1,6 +1,6 @@
 # Hello this is mine custom Nvim
 
-This project was heavily inspired by the [LazyVim](https://www.lazyvim.org/) distribuition, but I decided to create a new project to customize the plugin as I wanted and learn to more about how to configure the stuff on NeoVim
+This project was heavily inspired by the [LazyVim](https://www.lazyvim.org/) distribuition, but I decided to create a new project to customize the plugin as I wanted and learn more about how to configure the stuff on NeoVim
 
 ![readme-banner](imgs/readme-banner-v0.5.0.png)
 
