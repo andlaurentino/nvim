@@ -5,10 +5,7 @@ return {
 	opts = {
 		options = {
 			indicator = {
-		              -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
-		              -- icon = '', -- this should be omitted if indicator style is not 'icon'
-				-- style = 'underline',
-				-- underline_thickness = "10px"
+				style = 'underline',
 			},
 			offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
 		}

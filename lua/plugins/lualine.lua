@@ -14,59 +14,13 @@ local clients_lsp = function()
 	return '🧪 ' .. table.concat(c, '|')
 end
 
-local my_colors = {
-	dark_blue = '#1b4282',
-	mid_blue  = '#008cc8',
-	yellow    = '#ffbf01',
-
-	new_blue  = '#1478b7',
-	blue      = '#007ea7',
-	-- blue      = '#1c7eff',
-	orange    = '#f39b35',
-	green     = '#35f394',
-	violet    = '#5e60d8',
-	cyan      = '#73daca',
-
-	black     = '#080808',
-	white     = '#ffffff',
-	red       = '#ff5189',
-	grey      = '#303030',
-}
-
-local colors = require("tokyonight.colors").setup()
-
-local bubbles_theme = {
-	normal = {
-		a = { fg = my_colors.white, bg = my_colors.blue },
-		b = { fg = colors.white, bg = colors.bg_highlight },
-		c = { fg = colors.white, bg = "" },
-		x = { fg = colors.white, bg = "" },
-		y = { fg = colors.white, bg = "" },
-		z = { fg = colors.white, bg = "" },
-	},
-
-	command = { a = { fg = colors.bg, bg = colors.orange }, x = { fg = colors.white, bg = "" }, y = { fg = colors.white, bg = "" }, z = { fg = colors.white, bg = "" }, },
-	insert = { a = { fg = colors.bg, bg = colors.green }, x = { fg = colors.white, bg = "" }, y = { fg = colors.white, bg = "" }, z = { fg = colors.white, bg = "" }, },
-	visual = { a = { fg = colors.bg, bg = colors.blue }, x = { fg = colors.white, bg = "" }, y = { fg = colors.white, bg = "" }, z = { fg = colors.white, bg = "" }, },
-	replace = { a = { fg = colors.bg, bg = colors.cyan }, x = { fg = colors.white, bg = "" }, y = { fg = colors.white, bg = "" }, z = { fg = colors.white, bg = "" }, },
-
-	inactive = {
-		a = { fg = colors.white, bg = "" },
-		b = { fg = colors.white, bg = "" },
-		c = { fg = colors.white },
-		x = { fg = colors.white, bg = "" },
-		y = { fg = colors.white, bg = "" },
-		z = { fg = colors.white, bg = "" },
-	},
-}
-
 return {
 	'nvim-lualine/lualine.nvim',
 	dependencies = { "echasnovski/mini.icons" },
 	opts = {
 		options = {
 			icons_enabled = true,
-			theme = bubbles_theme,
+			theme = "auto",
 			component_separators = '',
 			section_separators = { left = '', right = '' },
 			disabled_filetypes = {
@@ -99,7 +53,7 @@ return {
 							return 'tabs: ' .. tabsize
 						end
 					end,
-					color = { fg = colors.white, bg = nil }, -- Customize the color as needed
+					-- Customize the color as needed, e.g., color = { bg = nil }
 				}, 'filetype'
 			},
 			lualine_y = { { 'progress' } },
