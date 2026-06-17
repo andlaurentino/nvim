@@ -39,6 +39,6 @@ return {
 		vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
 		vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find opened buffers" })
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find helper" })
-		vim.keymap.set('n', '<leader>ht', "<cmd>Telescope colorscheme enable_preview=true<CR>", { desc = "Change color scheme" })
+		vim.keymap.set('n', '<leader>bt', "<cmd>Telescope colorscheme enable_preview=true<CR>", { desc = "Theme Picker" })
 	end
 }

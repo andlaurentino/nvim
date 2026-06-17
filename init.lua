@@ -15,5 +15,5 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
--- Load the persisted theme (fallback to tokyonight if not found)
-require("config.theme").load_theme("tokyonight")
+-- Load persisted preferences (theme, indent, line numbers) from settings.json
+require("config.settings").load()

@@ -46,11 +46,6 @@ function AskToSaveBeforeLeave()
 end
 
 -- Close buffer / tab
--- vim.keymap.set("n", "<C-w>", "<cmd>bd<CR>")
-vim.keymap.set("n", "<C-w>", function()
-	vim.cmd('NvimTreeClose')
-	vim.cmd('bdelete')
-end)
 vim.keymap.set("n", "<leader>w", function()
 	if not AskToSaveBeforeLeave() then
 		return
@@ -153,10 +148,11 @@ vim.keymap.set("n", "<leader>bt", function()
 end, { desc = "Change Filetype" })
 
 local function set_spacing(expandtab, tabstop, shiftwidth, softtabstop)
-	vim.api.nvim_buf_set_option(0, 'expandtab', expandtab)
-	vim.api.nvim_buf_set_option(0, 'tabstop', tabstop)
-	vim.api.nvim_buf_set_option(0, 'shiftwidth', shiftwidth)
-	vim.api.nvim_buf_set_option(0, 'softtabstop', softtabstop)
+	vim.opt.expandtab = expandtab
+	vim.opt.tabstop = tabstop
+	vim.opt.shiftwidth = shiftwidth
+	vim.opt.softtabstop = softtabstop
+	require("config.settings").save()
 end
 
 vim.keymap.set("n", "<leader>bs", function()
@@ -203,10 +199,11 @@ end, { desc = "Toggle Spacing" })
 
 vim.keymap.set('n', '<leader>bn', function()
     if vim.wo.relativenumber then
-        vim.wo.number = true
-        vim.wo.relativenumber = false
+        vim.opt.number = true
+        vim.opt.relativenumber = false
     else
-        vim.wo.number = true
-        vim.wo.relativenumber = true
+        vim.opt.number = true
+        vim.opt.relativenumber = true
     end
+    require("config.settings").save()
 end, { desc = 'Toggle relative numbers' })

@@ -1,0 +1,9 @@
+{
+  "theme": "tokyonight-moon",
+  "expandtab": false,
+  "tabstop": 4,
+  "shiftwidth": 4,
+  "softtabstop": 4,
+  "number": true,
+  "relativenumber": true
+}
