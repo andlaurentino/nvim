@@ -23,6 +23,8 @@ return {
 			local cmp = require("cmp")
 			local cmp_action = lsp.cmp_action()
 			local luasnip = require('luasnip')
+			local keys = require("shared.keys")
+			local hl = require("shared.highlights")
 
 			cmp.setup.filetype({ "sql" }, {
 				sources = {
@@ -93,23 +95,21 @@ return {
 			})
 
 			local colors = require("tokyonight.colors").setup()
-			vim.api.nvim_set_hl(0, "Pmenu", { bg = colors.bg_float, fg = colors.fg })
-			vim.api.nvim_set_hl(0, "PmenuSel", { bg = colors.green, fg = colors.bg })
-			vim.api.nvim_set_hl(0, "FloatBorder", { bg = colors.none, fg = colors.blue })
+			hl.set("Pmenu", { bg = colors.bg_float, fg = colors.fg })
+			hl.set("PmenuSel", { bg = colors.green, fg = colors.bg })
+			hl.set("FloatBorder", { bg = colors.none, fg = colors.blue })
 
 			lsp.on_attach(function(_, bufnr)
 				lsp.default_keymaps({ buffer = bufnr })
 
-				vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
-				vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, { desc = "Go to declaration" })
-				vim.keymap.set("n", "<leader>ld", function() vim.lsp.buf.hover() end, { desc = "Show documentation" })
-				vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "Refactory Rename" })
-				vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format { async = true } end,
-					{ desc = "Format file" })
-				vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end,
-					{ desc = "Open Code Actions" })
-				vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, { desc = "Go next diagnostics" })
-				vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, { desc = "Go previous diagnostics" })
+				keys.buf_map(bufnr, "n", "gd", function() vim.lsp.buf.definition() end, "Go to definition")
+				keys.buf_map(bufnr, "n", "gD", function() vim.lsp.buf.declaration() end, "Go to declaration")
+				keys.buf_map(bufnr, "n", "<leader>ld", function() vim.lsp.buf.hover() end, "Show documentation")
+				keys.buf_map(bufnr, "n", "<leader>lr", function() vim.lsp.buf.rename() end, "Refactory Rename")
+				keys.buf_map(bufnr, "n", "<leader>lf", function() vim.lsp.buf.format { async = true } end, "Format file")
+				keys.buf_map(bufnr, "n", "<leader>la", function() vim.lsp.buf.code_action() end, "Open Code Actions")
+				keys.buf_map(bufnr, "n", "[d", function() vim.diagnostic.goto_next() end, "Go next diagnostics")
+				keys.buf_map(bufnr, "n", "]d", function() vim.diagnostic.goto_prev() end, "Go previous diagnostics")
 
 				vim.lsp.handlers["window/showMessage"] = function() end
 				vim.lsp.handlers["window/logMessage"] = function() end
