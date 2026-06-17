@@ -19,11 +19,9 @@ return {
 			local pairs = require("mini.pairs")
 			local move = require("mini.move")
 			local surround = require("mini.surround")
-			-- local trailspace = require("mini.trailspace")
+			local trailspace = require("mini.trailspace")
 			local indentscope = require("mini.indentscope")
-
-			-- TODO: Change the comment library
-			local comment = require("mini.comment")
+			-- local comment = require("mini.comment")
 
 			pairs.setup()
 			move.setup({
