@@ -129,6 +129,24 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			local lsp = require("lsp-zero")
+
+			local function load_lang_handlers()
+				local langs_dir = vim.fn.stdpath("config") .. "/lua/modules/lsp/langs"
+				local handlers = {}
+				if vim.fn.isdirectory(langs_dir) == 1 then
+					for _, file in ipairs(vim.fn.readdir(langs_dir)) do
+						if file:match("%.lua$") then
+							local mod = file:gsub("%.lua$", "")
+							local ok, lang = pcall(require, "modules.lsp.langs." .. mod)
+							if ok and lang.server and lang.setup then
+								handlers[lang.server] = function() lang.setup(lsp) end
+							end
+						end
+					end
+				end
+				return handlers
+			end
+
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"gopls",
@@ -140,9 +158,7 @@ return {
 					"tailwindcss",
 					"terraformls"
 				},
-				handlers = {
-					lsp.default_setup,
-				},
+				handlers = vim.tbl_extend("force", { lsp.default_setup }, load_lang_handlers()),
 			})
 		end
 	},
