@@ -39,9 +39,9 @@ return {
 			}
 		},
 		sections = { -- 'diff', 'diagnostics'
-			lualine_a = { { icon = "", "mode", separator = { left = '', right = '' } } },
-			lualine_b = { { 'branch', icon = '󰊢', separator = { right = '' } } },
-			lualine_c = { 'filename' },
+			lualine_a = { { icon = "", "mode", right_padding = 1, separator = { left = '', right = '' } } },
+			lualine_b = { { 'filename', separator = { right = '' } } },
+			lualine_c = { { 'branch', icon = '󰊢', separator = { right = '' } } },
 			lualine_x = {
 				clients_lsp,
 				'encoding',
@@ -63,11 +63,11 @@ return {
 		},
 		inactive_sections = {
 			lualine_a = {},
-			lualine_b = {},
-			lualine_c = { 'filename' },
-			lualine_x = { 'location' },
-			lualine_y = {},
-			lualine_z = {}
+			lualine_b = { 'branch' },
+			lualine_c = { },
+			lualine_x = { },
+			lualine_y = { 'progress' },
+			lualine_z = { 'location' }
 		},
 		tabline = {},
 		winbar = {},
