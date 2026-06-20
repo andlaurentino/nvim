@@ -1,6 +1,9 @@
 return {
 	"lewis6991/gitsigns.nvim",
 	config = function()
+		local keys = require("shared.keys")
+		local autocmds = require("shared.autocmds")
+
 		require('gitsigns').setup {
 			signs = {
 				add          = { text = '│' },
@@ -43,55 +46,36 @@ return {
 			on_attach = function(bufnr)
 				local gitsigns = require('gitsigns')
 
-				local function map(mode, l, r, opts)
-					opts = opts or {}
-					opts.buffer = bufnr
-					vim.keymap.set(mode, l, r, opts)
-				end
-
 				-- Navigation
-				map('n', ']c', function()
+				keys.buf_map(bufnr, 'n', ']c', function()
 					if vim.wo.diff then
 						vim.cmd.normal({ ']c', bang = true })
 					else
 						gitsigns.nav_hunk('next')
 					end
-				end)
+				end, "Next hunk")
 
-				map('n', '[c', function()
+				keys.buf_map(bufnr, 'n', '[c', function()
 					if vim.wo.diff then
 						vim.cmd.normal({ '[c', bang = true })
 					else
 						gitsigns.nav_hunk('prev')
 					end
+				end, "Previous hunk")
+
+				autocmds.on_buf(bufnr, 'CursorHold', function()
+					gitsigns.toggle_current_line_blame()
 				end)
 
-				vim.api.nvim_create_autocmd('CursorHold', {
-					buffer = bufnr,
-					callback = function()
-						-- gitsigns.blame_line({})
-						gitsigns.toggle_current_line_blame()
-					end,
-				})
-
 				-- Actions
-				-- map('n', '<leader>hs', gitsigns.stage_hunk)
-				-- map('n', '<leader>hr', gitsigns.reset_hunk)
-				-- map('v', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-				-- map('v', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-				-- map('n', '<leader>hS', gitsigns.stage_buffer)
-				-- map('n', '<leader>hu', gitsigns.undo_stage_hunk)
-				-- map('n', '<leader>hR', gitsigns.reset_buffer)
-				-- map('n', '<leader>hp', gitsigns.preview_hunk)
-				map('n', '<leader>gb', function() gitsigns.blame_line{ } end, { desc = "Git blame" })
-				map('n', '<leader>gf', function() gitsigns.blame_line{ full = true } end, { desc = "Git blame full" })
-				map('n', '<leader>gt', gitsigns.toggle_current_line_blame, { desc = "Git blame line" })
-				map('n', '<leader>gd', gitsigns.diffthis, { desc = "Git diff this" })
-				map('n', '<leader>gx', gitsigns.toggle_deleted, { desc = "Toggle delete" })
-				-- map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
+				keys.buf_map(bufnr, 'n', '<leader>gb', function() gitsigns.blame_line {} end, "Git blame")
+				keys.buf_map(bufnr, 'n', '<leader>gf', function() gitsigns.blame_line { full = true } end, "Git blame full")
+				keys.buf_map(bufnr, 'n', '<leader>gt', gitsigns.toggle_current_line_blame, "Git blame line")
+				keys.buf_map(bufnr, 'n', '<leader>gd', gitsigns.diffthis, "Git diff this")
+				keys.buf_map(bufnr, 'n', '<leader>gx', gitsigns.toggle_deleted, "Toggle delete")
 
 				-- Text object
-				map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+				vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { buffer = bufnr })
 			end
 		}
 	end

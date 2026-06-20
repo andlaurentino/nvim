@@ -14,6 +14,8 @@ local clients_lsp = function()
 	return '🧪 ' .. table.concat(c, '|')
 end
 
+-- █          
+
 return {
 	'nvim-lualine/lualine.nvim',
 	dependencies = { "echasnovski/mini.icons" },
@@ -37,9 +39,9 @@ return {
 			}
 		},
 		sections = { -- 'diff', 'diagnostics'
-			lualine_a = { { icon = "", "mode", separator = { left = '', right = '' } } },
-			lualine_b = { { 'branch', icon = '󰊢', separator = { right = '' } } },
-			lualine_c = { 'filename' },
+			lualine_a = { { icon = "", "mode", right_padding = 1, separator = { left = '', right = '' } } },
+			lualine_b = { { 'filename', separator = { right = '' } } },
+			lualine_c = { { 'branch', icon = '󰊢', separator = { right = '' } } },
 			lualine_x = {
 				clients_lsp,
 				'encoding',
@@ -56,16 +58,16 @@ return {
 					-- Customize the color as needed, e.g., color = { bg = nil }
 				}, 'filetype'
 			},
-			lualine_y = { { 'progress' } },
-			lualine_z = { { 'location', left_padding = 1 } }
+			lualine_y = { { 'progress', separator = { left = '' } } },
+			lualine_z = { { 'location', left_padding = 1, separator = { left = '', right = '' } } }
 		},
 		inactive_sections = {
 			lualine_a = {},
-			lualine_b = {},
-			lualine_c = { 'filename' },
-			lualine_x = { 'location' },
-			lualine_y = {},
-			lualine_z = {}
+			lualine_b = { 'branch' },
+			lualine_c = { },
+			lualine_x = { },
+			lualine_y = { 'progress' },
+			lualine_z = { 'location' }
 		},
 		tabline = {},
 		winbar = {},
@@ -75,5 +77,20 @@ return {
 	config = function(_, opts)
 		require("lualine").setup(opts)
 		vim.cmd("set laststatus=3")
+
+		local hl = require("shared.highlights")
+		hl.register_transparent({
+			"StatusLine",
+			"StatusLineNC",
+			"TabLineFill",
+			"TabLine",
+			"lualine_c_normal",
+			"lualine_c_insert",
+			"lualine_c_visual",
+			"lualine_c_replace",
+			"lualine_c_command",
+			"lualine_c_inactive",
+		})
+		hl.apply_transparent()
 	end
 }
